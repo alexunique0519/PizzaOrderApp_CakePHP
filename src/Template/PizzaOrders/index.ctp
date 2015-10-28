@@ -16,11 +16,11 @@
     <?php foreach ($pizzaOrders as $pizzaOrder): ?>
     <tr>
         <td><?= $pizzaOrder->id ?></td>
-        <td><?= $pizzaOrder->user ?></td>
+        <td><?= $pizzaOrder->userName ?></td>
         <td><?= $pizzaOrder->postalCode ?></td>
         <td><?= $pizzaOrder->city ?></td>
         <td>
-            <?= $pizzaOrder->created>format(DATE_RFC850) ?>
+            <?= $pizzaOrder->created->format(DATE_RFC850) ?>
         </td>
         <td><?= $pizzaOrder->orderStatus ?></td>
         
