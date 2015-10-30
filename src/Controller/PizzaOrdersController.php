@@ -49,7 +49,14 @@ class PizzaOrdersController extends AppController
     {
         $pizzaOrder = $this->PizzaOrders->newEntity();
         if ($this->request->is('post')) {
+            
+            $toppingsList = implode(",", $_POST["topping"]);
+            
             $pizzaOrder = $this->PizzaOrders->patchEntity($pizzaOrder, $this->request->data);
+            
+            //set value for topping property.
+            $pizzaOrder->set('topping', $toppingsList)；
+            
             if ($this->PizzaOrders->save($pizzaOrder)) {
                 $this->Flash->success(__('The pizza order has been saved.'));
                 return $this->redirect(['action' => 'index']);
