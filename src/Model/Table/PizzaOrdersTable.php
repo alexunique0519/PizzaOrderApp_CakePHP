@@ -38,11 +38,7 @@ class PizzaOrdersTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('id', 'create')
-            ->notEmpty('id');
-
+   
         $validator
             ->requirePresence('userName', 'create')
             ->notEmpty('userName');
@@ -75,10 +71,17 @@ class PizzaOrdersTable extends Table
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
             ->notEmpty('email');
-
+        
         $validator
-            ->requirePresence('orderStatus', 'create')
-            ->notEmpty('orderStatus');
+            ->requirePresence('telNumber', 'create')
+            ->notEmpty('telNumber')
+            ->add('reg_no', 'validFormat', [
+                'rule' => array('phoneNumber', '/^\(?([1-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/'),
+                'message' => 'Please enter a valid telephone number.'
+            ]);
+       // $validator
+        //    ->requirePresence('orderStatus', 'create')
+         //   ->notEmpty('orderStatus');
 
         return $validator;
     }
@@ -92,7 +95,7 @@ class PizzaOrdersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        //$rules->add($rules->isUnique(['email']));
         return $rules;
     }
 }
