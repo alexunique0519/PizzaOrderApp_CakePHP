@@ -1,3 +1,5 @@
+<?= $this->Html->script('result') ?>
+
 <div class="row" >
     <div class="col-md-4">
     </div>
@@ -44,7 +46,11 @@
                 </div>
             </div>
         
-        
+               <?php $user = $this->request->session()->read('Auth.User');
+                     if(!empty($user)){
+                      echo $this->Html->link('Back to Order List', ['controller' => 'pizzaOrders','action' => 'index'], ['id' => 'orderListLink']);
+                             }
+                            ?>
     </div>
     <div class="col-md-4">
     </div>

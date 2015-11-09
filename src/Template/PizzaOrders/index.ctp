@@ -68,13 +68,13 @@
 </table>
 <nav>
   <ul class="pager">
-    <li><a id="back_ordered" href="" >Previous</a></li>
-    <li><a id="forward_ordered" href="">Next</a></li>
+    <li><a id="back_ordered" href="#" >Previous</a></li>
+    <li><a id="forward_ordered" href="#">Next</a></li>
   </ul>
 </nav>
        
     <!-- completed order list-->
-    <h3><span class="label label-info">Order List - Completed</span></h3>
+    <h3><span class="label label-info" id="completedList">Order List - Completed</span></h3>
 <table class="table table-bordered" id="orderTable_completed" >
     <tr>
         <th>Id</th>
@@ -121,7 +121,7 @@
 </div>
 <nav>
   <ul class="pager">
-    <li><a id="back_completed" href="" >Previous</a></li>
-    <li><a id="forward_completed" href="">Next</a></li>
+    <li><a id="back_completed" href="#completedList" >Previous</a></li>
+    <li><a id="forward_completed" href="#completedList">Next</a></li>
   </ul>
 </nav>

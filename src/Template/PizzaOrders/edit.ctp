@@ -2,21 +2,24 @@
 
 <div >
     
+   
     <?php 
-       echo $this->Form->create($pizzaOrder, ['novalidate' => true], ['action' => 'add']);
+       echo $this->Form->create($pizzaOrder, ['novalidate' => true]);
     ?>    
-
+    
+    <span hidden id="editToppings"><?= $pizzaOrder->topping ?></span>
+    
    <div class="row">
        <div class="col-md-2">
        </div>
-                  
+       
        <div class="col-md-8">
            <div class="row">
-           <h3 ><span class="label label-info">Order A Pizza</span></h3>
+           <h3 ><span class="label label-info">Edit Order</span></h3>
            </div>        
+       
        <div class="col-md-6 panel panel-default" id="panel">
-           
-        
+
            <div class="panel-heading">
                 <h4 class="text-center">Customer Information</h4>
            </div>
@@ -50,9 +53,10 @@
 
                 ?>
            </div>
-          
        </div>
+       
        <div class="col-md-6 panel panel-default" id="panel">
+           
             <div class="panel-heading">
                 <h4 class="text-center">Order Information</h4>
             </div>
@@ -78,51 +82,51 @@
                     <div class="form-control" id="topping">
                         <div>
                             <label class="checkbox-inline col-sm-6">
-                                <input type="checkbox" name="topping[]" value="pepperoni">Pepperoni
+                                <input type="checkbox" id="pepperoni" name="topping[]" value="pepperoni">Pepperoni
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="topping[]" value="baconStrips">Bacon Strips
+                                <input type="checkbox" id="baconStrips"  name="topping[]" value="baconStrips">Bacon Strips
                             </label>
                         </div>
                         <div>
                             <label class="checkbox-inline col-sm-6">
-                                <input type="checkbox" name="topping[]" value="chicken">Chicken
+                                <input type="checkbox" id="chicken" name="topping[]" value="chicken">Chicken
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="topping[]" value="groundBeef">Ground Beef
+                                <input type="checkbox" id="groundBeef" name="topping[]" value="groundBeef">Ground Beef
                             </label>
                         </div>
                         <div>
                             <label class="checkbox-inline col-sm-6">
-                                <input class="" type="checkbox" name="topping[]" value="broccoli">Broccoli
+                                <input class="" type="checkbox" id="broccoli" name="topping[]" value="broccoli">Broccoli
                             </label>
                             <label class="checkbox-inline">
-                                <input class="" type="checkbox" name="topping[]" value="grilledZucchini">Grilled Zucchini
+                                <input class="" type="checkbox" id="grilledZucchini" name="topping[]" value="grilledZucchini">Grilled Zucchini
                             </label>
 
                         </div>
                         <div>
                             <label class="checkbox-inline col-sm-6">
-                                <input class="" type="checkbox" name="topping[]" value="greenPepper">Green Pepper
+                                <input class="" type="checkbox" id="greenPepper" name="topping[]" value="greenPepper">Green Pepper
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="topping[]" value="mushRoom">Mushroom
+                                <input type="checkbox" id="mushRoom" name="topping[]" value="mushRoom">Mushroom
                             </label>
                         </div>
                         <div>
                             <label class="checkbox-inline col-sm-6">
-                                <input class="" type="checkbox" name="topping[]" value="cheeseBlend">Cheese Blend
+                                <input class="" type="checkbox" id="cheeseBlend" name="topping[]" value="cheeseBlend">Cheese Blend
                             </label>
                             <label class="checkbox-inline ">
-                                <input class="" type="checkbox" name="topping[]" value="extraCheese">Extra Cheese
+                                <input class="" type="checkbox" id="extraCheese" name="topping[]" value="extraCheese">Extra Cheese
                             </label>
                         </div>
                         <div>
                             <label class="checkbox-inline col-sm-6" style="padding-right: 0px;">
-                                <input class="" type="checkbox" name="topping[]" value="parmesanCheese">Parmesan Cheese
+                                <input class="" type="checkbox" id="parmesanCheese" name="topping[]" value="parmesanCheese">Parmesan Cheese
                             </label>
                             <label class="checkbox-inline ">
-                                <input class="" type="checkbox" name="topping[]" value="cheese">Cheese
+                                <input class="" type="checkbox" id="cheese" name="topping[]" value="cheese">Cheese
                             </label>
                         </div>
                     </div>
@@ -143,11 +147,19 @@
                 ?>
                  <span id="crustTypeError" class="hidden"></span>
            </div>
+            
        </div>
-    </div>
+           <?php $user = $this->request->session()->read('Auth.User');
+                     if(!empty($user)){
+                      echo $this->Html->link('Back to Order List', ['controller' => 'pizzaOrders','action' => 'index'], ['id' => 'orderListLink', 'class' => 'pull-right']);
+                             }
+                            ?>
+              
+       </div>
        <div class="col-md-2">
       </div>
 </div>
+    
 
 <div class="row">
     <div class="col-md-5">
