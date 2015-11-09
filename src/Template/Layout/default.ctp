@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
- $cakeDescription = 'CakePHP: the rapid development php framework';
+ $cakeDescription = 'Pizza Order';
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,36 +26,88 @@
     </title>
     <?= $this->Html->meta('icon') ?>
     
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
-   
+    <?= $this->Html->script('angular.min') ?>
+    <?= $this->Html->script('angular-route.min') ?>
+    <?= $this->Html->script('app') ?>
+    <?= $this->Html->script('validation') ?>
     
     <?= $this->Html->css('bootstrap.min.css') ?>
-
-    
-    
+    <?= $this->Html->css('site.css') ?>
+  
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    
 </head>
-<body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <section class="top-bar-section">
-            <!--<ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-            </ul>-->
-        </section>
+<body >
+   <nav class="navbar navbar-default">
+        <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown_menu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                    <?= $this->Html->link('Pizza Order', ['controller' => 'PizzaOrders','action' => 'add'], ['class' => 'navbar-brand']); ?>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="dropdown_menu">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        
+                        <li>
+                         <a id="user"><?php $user = $this->request->session()->read('Auth.User');
+                             
+                             if(!empty($user))
+                             {
+                                 echo "Welcome" ." ".$user['username'];
+                                
+                             }
+                            
+                           ?>
+                         </a>    
+                        </li>
+                        <li>
+                            <?php
+                                 $user = $this->request->session()->read('Auth.User');
+                                 if(empty($user)){
+                                 echo $this->Html->link('Login', ['controller' => 'users','action' => 'login'], ['id' => 'login'] );
+                             }
+                            ?>
+                                        
+                        </li>
+                        <li>
+                            
+                             <?php
+                                 $user = $this->request->session()->read('Auth.User');
+                                 if(!empty($user)){
+                                echo  $this->Html->link('Logout', ['controller' => 'users','action' => 'logout'], ['id' => 'logout'] );
+                             }
+                            ?>
+                            
+                        </li>
+                    
+                    </ul>
+
+                </div>
+       </div>
+
     </nav>
+    
     <?= $this->Flash->render() ?>
-    <section class="container clearfix">
+    <section class="">
         <?= $this->fetch('content') ?>
     </section>
     <footer>
     </footer>
+    
+    
 </body>
 </html>
