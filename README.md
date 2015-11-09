@@ -23,4 +23,6 @@ the setup traffic lights.
 ## Configuration
 
 Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
+configuration relevant for your application.   
+
+The database file is in the Database_Exported folder
