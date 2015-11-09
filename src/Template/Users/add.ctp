@@ -1,13 +1,34 @@
 <div class="users form">
-<?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Add User') ?></legend>
-        <?= $this->Form->input('username') ?>
-        <?= $this->Form->input('password') ?>
-        <?= $this->Form->input('role', [
-            'options' => ['admin' => 'Admin', 'author' => 'Author']
-        ]) ?>
-   </fieldset>
-<?= $this->Form->button(__('Submit')); ?>
-<?= $this->Form->end() ?>
+<?= $this->Flash->render('auth') ?>
+<?= $this->Form->create() ?>
+<div class="row" >
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+             <div class="panel-heading">
+                 <h4 class="panel-title"><B>Employee Sign Up</B></h4>
+             </div>
+            
+             <div class="panel-body">
+            <div class="form-group">
+                <?= $this->Form->input('username',['class' => 'form-control']) ?>
+            </div>
+            <div class="form-group">    
+                <?= $this->Form->input('password', ['class' => 'form-control']) ?>
+            </div>
+            <div class="form-group">
+                <?= $this->Form->input('role', [
+                    'options' => ['admin' => 'Admin', 'user' => 'user'], 'class' => 'form-control'
+                ]) ?>
+            </div>         
+            <div class="form-group">
+                <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-md btn-info form-control']); ?>
+                <?= $this->Form->end() ?>
+        
+            </div>
+        </div>
+    </div>
+     <div class="col-md-4">
+    </div>
 </div>

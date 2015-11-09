@@ -19,9 +19,10 @@
                <div class="form-group">
                 <?= $this->Form->input('password', ['class' => 'form-control']) ?>
                </div>
-               
                  <?= $this->Form->button(__('Login'), ['class' => 'btn btn-info form-control']); ?>
-            
+               <div class="form-group" id="signUp">
+               <?= $this->html->link( 'Employee Sign up', ['controller' => 'users','action' => 'add'], ['class' => 'btn btn-success form-control'])?>
+               </div>
              </div>
         </div>
     </div>
