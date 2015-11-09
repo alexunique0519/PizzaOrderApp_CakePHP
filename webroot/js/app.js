@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 var app = angular.module('PizzaOrderApp', ['ngRoute']);
 
 app.controller('pizzaOrderController', [ '$scope', '$http', function( $scope,$http){
@@ -74,9 +74,9 @@ app.controller('pizzaOrderController', [ '$scope', '$http', function( $scope,$ht
    }
     
     
-}]);
+}]); 
 
-var serverBase = "http://localhost:54301/";
+var serverBase = "http://localhost:54301/";*/
 
 //define all the values 
 var userName;
