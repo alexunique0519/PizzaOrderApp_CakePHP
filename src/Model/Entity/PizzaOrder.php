@@ -21,5 +21,5 @@ use Cake\ORM\Entity;
  */
 class PizzaOrder extends Entity
 {
-    
+
 }
